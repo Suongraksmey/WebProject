@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation with Cool Background</title>
+  <style type="text/css">
+    body {
+
+      background-image: url("./img/1234.avif");
+      background-size: max(100%);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #ff7e5f;
+
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #feb47b;
+    }
+
+    span {
+      color: red;
+      font-size: 12px;
+    }
+  </style>
+  <script type="text/javascript">
+    function myFunction() {
+      var username = document.forms["myForm"]["username"].value;
+      var password = document.forms["myForm"]["Pass"].value;
+
+      // Validate username and password
+      if (username === "admin" && password === "123") {
+        window.location.href = "404.html";
+        return false;
+      } else if (username !== "admin" && password === "123") {
+        document.getElementById('us').innerHTML = "Username is incorrect";
+        return false;
+      } else if (username === "admin" && password !== "123") {
+        document.getElementById('pw').innerHTML = "Password is incorrect";
+        return false;
+      } else if (username === "") {
+        document.getElementById('us').innerHTML = "Username is required";
+        return false;
+      } else if (password === "") {
+        document.getElementById('pw').innerHTML = "Password is required";
+        return false;
+      } else {
+        document.getElementById('us').innerHTML = "Username can contain only text";
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+<div class="form-container">
+  <form name="myForm" onsubmit="return myFunction()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <span id="us"></span><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="Pass" name="Pass"><br><br>
+    <span id="pw"></span><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</body>
+</html>
